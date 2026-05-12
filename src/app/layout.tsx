@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Student Performance ML",
-  description: "Predict student math scores with machine learning",
+  title: "howsthemath",
+  description: "Predict student math score with Machine Learning",
 };
 
 export default function RootLayout({

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GraduationCap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,9 +18,12 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto w-full max-w-5xl flex h-14 items-center px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-          <GraduationCap className="h-6 w-6" />
-          <span>Student Performance ML</span>
+        <Link href="/" className="flex items-center">
+          <img
+            src="/howsthemath.svg"
+            alt="howsthemath"
+            className="h-7 w-auto"
+          />
         </Link>
 
         <nav className="ml-auto hidden md:flex items-center gap-6 text-sm font-medium">
