@@ -1,6 +1,6 @@
 # Student Performance Frontend
 
-The frontend for the Student Performance ML API.
+The frontend for the [student-performance-ml](https://github.com/Oeija/student-performance-ml) backend.
 
 ## Features
 
