@@ -19,7 +19,7 @@ export function PredictPageHeader() {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="text-muted-foreground mt-2"
       >
-        Fill in the student details below to get an AI-powered prediction.
+        Fill in the student details below to get an ML-powered prediction.
       </motion.p>
     </div>
   );
