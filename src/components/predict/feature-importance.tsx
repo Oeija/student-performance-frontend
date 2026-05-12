@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   BarChart,
   Bar,
@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { getModelInfo } from "@/lib/api";
 import { FeatureImportanceItem } from "@/types/prediction";
 
@@ -36,6 +37,7 @@ export function FeatureImportance() {
   const [data, setData] = useState<FeatureImportanceItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showExplanation, setShowExplanation] = useState(false);
 
   useEffect(() => {
     getModelInfo()
@@ -122,6 +124,39 @@ export function FeatureImportance() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
+
+          <div className="mt-4 border-t pt-4">
+            <button
+              onClick={() => setShowExplanation(!showExplanation)}
+              className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              What is this?
+              {showExplanation ? (
+                <ChevronUp className="h-4 w-4" />
+              ) : (
+                <ChevronDown className="h-4 w-4" />
+              )}
+            </button>
+            <AnimatePresence>
+              {showExplanation && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                    This chart shows which features most influence the predicted
+                    math score. Longer bars mean a feature has a larger overall
+                    impact. SHAP values are based on the mean of absolute values,
+                    so this represents overall importance regardless of whether
+                    the feature pushes the score up or down.
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </CardContent>
       </Card>
     </motion.div>
