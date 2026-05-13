@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Target, GitBranch, Layers, Database } from "lucide-react";
+import { ArrowRight, BarChart3, Target, GitBranch, Layers, Database, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,6 +31,7 @@ const metrics = [
     value: "1,000 Students",
     description: "Kaggle dataset",
     icon: Database,
+    link: "https://www.kaggle.com/datasets/spscientist/students-performance-in-exams",
   },
 ];
 
@@ -94,8 +95,19 @@ export function HeroSection() {
                     </span>
                   </div>
                   <div className="text-2xl font-bold">{metric.value}</div>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-muted-foreground mt-1 flex items-center gap-1">
                     {metric.description}
+                    {metric.link && (
+                      <a
+                        href={metric.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+                        aria-label="Open Kaggle dataset"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
                   </p>
                 </CardContent>
               </Card>
