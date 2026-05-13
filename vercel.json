@@ -9,8 +9,12 @@
       "destination": "http://3.87.146.94:8000/health"
     },
     {
-      "source": "/docs/:path*",
+      "source": "/api-docs/:path*",
       "destination": "http://3.87.146.94:8000/docs/:path*"
+    },
+    {
+      "source": "/openapi.json",
+      "destination": "http://3.87.146.94:8000/openapi.json"
     }
   ]
 }

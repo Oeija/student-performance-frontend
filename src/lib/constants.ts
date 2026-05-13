@@ -3,4 +3,4 @@ export const API_URL =
 
 export const API_DOCS_URL = API_URL
   ? `${API_URL}/docs`
-  : "/docs";
+  : "/api-docs";
